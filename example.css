@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa; /* Light background */
+    color: #333;
+}
+header {
+    text-align: center;
+    background-color: #f8f9fa;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    padding-top: 300px;
+    font-size: 24px;
+    font-weight: bold;
+}
+#search-container {
+    position: relative;
+    width: 600px;
+    text-align: center; /* Centering text inside the container */
+}
+#search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+#suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #ccc;
+    background: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+}
+.suggestion {
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.suggestion:hover,
+.suggestion.active {
+    background: #007BFF;
+    color: white;
+}

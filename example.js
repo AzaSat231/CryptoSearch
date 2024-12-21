@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
     searchInput.addEventListener("input", () => {
         const query = searchInput.value.toLowerCase();
         suggestionsBox.innerHTML = "";
-
+    
         if (debounceTimeout) clearTimeout(debounceTimeout);
-
+    
         debounceTimeout = setTimeout(() => {
             if (query) {
                 const filteredData = data
@@ -61,33 +61,39 @@ document.addEventListener("DOMContentLoaded", () => {
                         }
                         return a.name.localeCompare(b.name); // Secondary sort alphabetically
                     });
-
+    
                 filteredData.forEach((item, index) => {
                     const suggestion = document.createElement("div");
                     suggestion.classList.add("suggestion");
-                    suggestion.textContent = item.name;
+    
+                    // Add the name and URL
+                    suggestion.innerHTML = `
+                        <span class="name">${item.name}</span>
+                        <span class="url">${item.url}</span>
+                    `;
                     suggestion.dataset.url = item.url;
                     suggestionsBox.appendChild(suggestion);
-
+    
                     // Handle click event on suggestions
                     suggestion.addEventListener("click", () => {
                         window.location.href = item.url;
                     });
                 });
-
+    
                 if (filteredData.length > 0) {
                     activeIndex = 0; // Automatically highlight the first suggestion
                     updateActiveSuggestion(document.querySelectorAll(".suggestion"));
                 } else {
                     activeIndex = -1; // Reset active index
                 }
-
+    
                 suggestionsBox.style.display = "block";
             } else {
                 suggestionsBox.style.display = "none";
             }
         }, 300); // Debounce delay (300ms)
     });
+    
 
     // Handle keyboard navigation and Enter key
     searchInput.addEventListener("keydown", (e) => {

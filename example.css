@@ -41,12 +41,25 @@ header {
     display: none;
 }
 .suggestion {
-    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
     cursor: pointer;
-    font-size: 14px;
+    border-bottom: 1px solid #ddd;
 }
-.suggestion:hover,
+
+.suggestion .name {
+    font-weight: bold;
+}
+
+.suggestion .url {
+    font-size: 0.85em;
+    color: #666;
+    margin-left: 10px;
+    word-break: break-all;
+}
+
 .suggestion.active {
-    background: #007BFF;
-    color: white;
+    background-color: #f0f0f0;
 }
